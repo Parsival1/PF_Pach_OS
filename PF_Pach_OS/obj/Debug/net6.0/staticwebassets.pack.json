@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\PF_Pach_OS.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\wwwroot\\css\\estructuracion.css",
+      "PackagePath": "staticwebassets\\css\\estructuracion.css"
+    },
+    {
       "Id": "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
