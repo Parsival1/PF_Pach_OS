@@ -1,0 +1,168 @@
+﻿@model PF_Pach_OS.Models.CreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <form method="post">
+    <div class="col-md-4">
+            @{
+                if (ViewBag.ProductoActivo==null){
+                
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Producto.IdProducto" value="@ViewBag.IdProducto" />
+                    <div class="form-group">
+                        <label asp-for="Producto.NomProducto" class="control-label"></label>
+                        <input asp-for="Producto.NomProducto" class="form-control" />
+                        <span asp-validation-for="Producto.NomProducto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Producto.PrecioVenta" class="control-label"></label>
+                        <input asp-for="Producto.PrecioVenta" class="form-control" />
+                        <span asp-validation-for="Producto.PrecioVenta" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Producto.IdTamano" class="control-label"></label>
+                        <select asp-for="Producto.IdTamano" class="form-control" asp-items="ViewBag.IdTamano"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Producto.IdCategoria" class="control-label"></label>
+                        <select asp-for="Producto.IdCategoria" class="form-control" asp-items="ViewBag.IdCategoria" >
+                            <option value="">@ViewBag.SelectC</option>
+                        </select>
+                    </div>
+                    
+                    
+                }
+                else
+                {
+                    
+                    
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Producto.IdProducto" value="@ViewBag.IdProducto" />
+                        <div class="form-group">
+                            <label asp-for="Producto.NomProducto" class="control-label"></label>
+                            <input asp-for="Producto.NomProducto" value="@ViewBag.ProductoActivo.NomProducto" class="form-control" />
+                            <span asp-validation-for="Producto.NomProducto" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Producto.PrecioVenta" class="control-label"></label>
+                            <input asp-for="Producto.PrecioVenta" value="@ViewBag.ProductoActivo.PrecioVenta" class="form-control" />
+                            <span asp-validation-for="Producto.PrecioVenta" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Producto.IdTamano" class="control-label"></label>
+                            <select asp-for="Producto.IdTamano" class="form-control" value="@ViewBag.ProductoActivo.IdTamano" asp-items="ViewBag.IdTamano"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Producto.IdCategoria" class="control-label"></label>
+                            <select asp-for="Producto.IdCategoria" class="form-control"  asp-items="ViewBag.IdCategoria">
+                            <option value="">@ViewBag.SelectC</option>
+                            </select>
+                        </div>
+                        
+                   
+                }
+            }
+            
+
+            
+          
+        
+    </div>
+    <div class="col-md-6">
+        
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Receta.IdProducto" value="@ViewBag.Idproducto">
+            
+            
+            <div class="form-group">
+                
+                <select asp-for="Receta.IdInsumo" class="form-control" asp-items="ViewBag.Insumo"></select>
+            </div>
+            <div class="form-group">
+
+                <input asp-for="Receta.CantInsumo" type="number" placeholder="Cantidad de Insumo">
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" asp-action="Create" asp-controller="Recetas" class="btn btn-primary"> Agregar Insumo </button>
+            </div>
+       
+        @{
+            if (ViewBag.Receta == null)
+            {
+                <h4>No hay insumos de receta</h4>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(Model=> Model.Receta.CantInsumo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(Model => Model.Receta.IdInsumo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(Model => Model.Receta.IdProducto)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (List<Receta>)ViewBag.Receta)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CantInsumo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdInsumo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdProducto)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.IdReceta">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.IdReceta">Details</a> |
+                                        <a asp-action="Delete" asp-controller="Recetas" value="@ViewBag.IdProducto" asp-route-id="@item.IdReceta" asp-route-IdProducto="@ViewBag.IdProducto">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            }
+
+
+       
+
+    </div>
+        <div>
+            
+            <input type="submit" asp-action="Crear" asp-controller="Productos" class="btn btn-primary" />
+            
+        </div>
+
+    </form>
+   @* <form asp-action="Delete">
+        <input type="hidden" asp-for="Producto.IdProducto" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        
+    </form>*@
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
