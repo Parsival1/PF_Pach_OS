@@ -1,0 +1,35 @@
+﻿@model List<PF_Pach_OS.Models.Compra>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.accion = "Create";
+    ViewBag.controlador = "Compras";
+    ViewBag.nombre = "Crear compras";
+    ViewBag.mostrarModal = 1;
+}
+
+<h2>Lista de Compras</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Compra</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var compra in Model)
+        {
+            <tr>
+                <td>@compra.IdCompra</td>
+                <td>@compra.FechaCompra</td>
+                <td>@compra.Total</td>
+                <td>
+                    <a asp-action="Crear" asp-route-IdCompra="@compra.IdCompra" class="btn btn-primary">Detalles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
