@@ -1,0 +1,7 @@
+﻿body {
+}
+
+.lista-detalles {
+    display: flex;
+    justify-content: space-between;
+}

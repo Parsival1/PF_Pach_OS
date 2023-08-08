@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PF_Pach_OS.Models.DetallesCompra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioInsumo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCompraNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdInsumoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioInsumo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCompraNavigation.IdCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdInsumoNavigation.IdInsumo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDetallesCompra">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDetallesCompra">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDetallesCompra">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

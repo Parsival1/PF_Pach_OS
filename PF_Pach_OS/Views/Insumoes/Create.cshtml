@@ -1,0 +1,43 @@
+﻿@model PF_Pach_OS.Models.Insumo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Insumo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomInsumo" class="control-label"></label>
+                <input asp-for="NomInsumo" class="form-control" />
+                <span asp-validation-for="NomInsumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantInsumo" class="control-label"></label>
+                <input asp-for="CantInsumo" class="form-control" />
+                <span asp-validation-for="CantInsumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medida" class="control-label"></label>
+                <input asp-for="Medida" class="form-control" />
+                <span asp-validation-for="Medida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

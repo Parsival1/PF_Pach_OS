@@ -1,0 +1,102 @@
+﻿html{
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #F7F6F6;
+}
+
+nav {
+    background-color: #381F12;
+    color: #FFF;
+    height: 100vh;
+    width: 35vh;
+    border: 1px solid #000000;
+    border-radius: 0px 0px 30px 0px;
+    display: grid;
+    grid-template-rows: 10% 80% 10%
+}
+
+section {
+    width: 100%;
+}
+
+header {
+    background-color: #D9D9D9;
+    height: 4vh;
+    width: 100%;
+    border: 1px solid #000;
+    padding: 0 15px 0 15px
+}
+
+.modulos {
+    background-color: #FFF;
+    margin: 2vh 0 0 5vh;
+    width: 95%;
+    height: 85%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.btn-crear-registros {
+    margin: 20px 0 0px 33px;
+    width: 150px;
+    background: linear-gradient(180deg, #FF9200 2.08%, #8D5F20 100%);
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: #FFF;
+    text-align: center;
+    border: none;
+}
+
+.encabezado-menu{
+    height: 20vh;
+    justify-items: center;
+    text-align: center;
+}
+
+.links-modulos {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.links-modulos:hover {
+    background: #eeeeee;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 110%;
+    font-size: 18px;
+
+}
+
+.activo {
+    background: #D9D9D9;
+    padding-left: 20px;
+    color: #000000;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 115%;
+}
+
+.activo:hover{
+    color: #000;
+}
+
+.contenedor-configuracion {
+    background-color: #4E2B19;
+    border-radius: 0px 0px 30px 0px;
+    height: 40px;
+    width: 100%;
+    align-self: end;
+}
+
+.btn-configuracion:hover {
+    color: #000;
+    background-color: #52392E;
+    border-radius: 0px 0px 30px 0px;
+}
