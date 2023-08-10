@@ -1,0 +1,36 @@
+﻿@model PF_Pach_OS.Models.Receta
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantInsumo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantInsumo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdInsumoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdInsumoNavigation.IdInsumo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProductoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProductoNavigation.IdProducto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdReceta">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
