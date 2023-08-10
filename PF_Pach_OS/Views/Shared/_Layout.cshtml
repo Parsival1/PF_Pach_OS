@@ -23,7 +23,17 @@
 
     <article class="content-wrapper">
         <form asp-action="Create" method="post">
+            <div class="contenedor-configuracion">
+                <a class="nav-link btn-configuracion text-light" asp-action="">Configuracion</a>
+            </div>
+        </nav>
+        <section>
+            <header class="d-flex justify-content-between">
+                <label>@ViewBag.accion MODULO</label>
+            <label class="">@ViewBag.accion Usuario</label>
+            </header>
 
+        <form asp-action="Create" method="post">
             <button type="submit" class="btn-crear-registros"
             @if (ViewBag.mostrarModal == 0)
             {
@@ -50,7 +60,10 @@
     <script src="~/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/adminLTE/dist/js/adminlte.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
