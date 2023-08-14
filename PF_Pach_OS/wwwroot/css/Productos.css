@@ -1,0 +1,92 @@
+﻿.crear-productos{
+    padding: 5vh 5vh 0 5vh 
+}
+
+.registrar-productos {
+    width: 100%;
+    height: 15vh;
+    background-color: #F2F1EC;
+    padding: 30px 20px 20px 20px;
+    background: #F2F1EC;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.recetas {
+    background-color: #F2F1EC;
+    margin: 5vh 0 0 8vw;
+    width: 70%;
+    padding: 30px 20px 20px 20px;
+    height: 55vh;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+/* Inputs en resposo */
+.label-campo {
+    display: inline-block;
+    width: 135px;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    position: relative;
+    box-sizing: border-box;
+    transition: .25s;
+    cursor: text;
+    background-color: #F2F1EC   
+}
+
+.label-campo .input-campo{
+    display: inline-block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.label-campo .nombre-campo{
+    color: #000;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    transition: 0.25s;
+}
+
+.nombre-campo, .input-campo {
+    font: 16px/16px verdana;
+    padding: 0;
+}
+
+/* Inputs en focus */
+.label-campo.focus {
+    border-color: yellow;
+}
+
+.label-campo .nombre-campo.focus {
+    color: rgb(255, 216, 0);
+}
+
+/* Inputs activos */
+.label-campo .nombre-campo.top {
+    left: 2px;
+    top: -10px;
+    font-size: 12px;
+    background-color: #F2F1EC;
+    padding: 2px 2px;
+}
+
+.select-campo {
+    appearance: none;
+    border: none;
+    background-color: #fff;
+    width: 100%;
+    cursor: pointer
+}
+
+.tamano-label {
+    width: 300px
+}
+
+.insumoReceta{
+    border-radius: 8px;
+    height: 30px
+}

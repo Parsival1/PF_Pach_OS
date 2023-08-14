@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\OneDrive\\Pictures\\Documents\\GitHub\\PF_Pach_OS_1\\PF_Pach_OS\\PF_Pach_OS.csproj": {}
+    "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\PF_Pach_OS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\OneDrive\\Pictures\\Documents\\GitHub\\PF_Pach_OS_1\\PF_Pach_OS\\PF_Pach_OS.csproj": {
+    "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\PF_Pach_OS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Pictures\\Documents\\GitHub\\PF_Pach_OS_1\\PF_Pach_OS\\PF_Pach_OS.csproj",
+        "projectUniqueName": "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\PF_Pach_OS.csproj",
         "projectName": "PF_Pach_OS",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Pictures\\Documents\\GitHub\\PF_Pach_OS_1\\PF_Pach_OS\\PF_Pach_OS.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Pictures\\Documents\\GitHub\\PF_Pach_OS_1\\PF_Pach_OS\\obj\\",
+        "projectPath": "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\PF_Pach_OS.csproj",
+        "packagesPath": "C:\\Users\\vamil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vamil\\OneDrive\\Escritorio\\Progrmacion\\SENA\\Proyecto Formativo Pach_OS\\PF_Pach_OS\\PF_Pach_OS\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

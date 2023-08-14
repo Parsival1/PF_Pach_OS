@@ -23,17 +23,6 @@
 
     <article class="content-wrapper">
         <form asp-action="Create" method="post">
-            <div class="contenedor-configuracion">
-                <a class="nav-link btn-configuracion text-light" asp-action="">Configuracion</a>
-            </div>
-        </nav>
-        <section>
-            <header class="d-flex justify-content-between">
-                <label>@ViewBag.accion MODULO</label>
-            <label class="">@ViewBag.accion Usuario</label>
-            </header>
-
-        <form asp-action="Create" method="post">
             <button type="submit" class="btn-crear-registros"
             @if (ViewBag.mostrarModal == 0)
             {
@@ -46,7 +35,7 @@
                 <text>onclick="window.location.href='@Url.Action($"{accion}", $"{controlador}")'"</text>
             }
             asp-action="@ViewBag.accion">@ViewBag.nombre
-        </button>
+            </button>
         </form>
         <div class="modulos">
             @RenderBody()
