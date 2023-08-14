@@ -1,0 +1,227 @@
+﻿@model Tuple<DetallesCompra, Compra>;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+}
+
+<h1>Create</h1>
+
+<p>@ViewBag.IdCompra</p>
+
+@{
+    var total = 0;
+    foreach (var detalle in ViewBag.Detalles)
+    {
+        total += detalle.Total;
+    }
+    string amountString = total.ToString();
+    char[] digits = amountString.ToCharArray();
+    Array.Reverse(digits);
+    Console.WriteLine(digits);
+
+    List<char> currencyArray = new List<char>();
+    for (int i = 0; i < digits.Length; i++)
+    {
+        currencyArray.Add(digits[i]);
+
+        if (currencyArray.Count == 7 && digits.Length > 6)
+        {
+            currencyArray.Insert(7, '.');
+        }
+        else if (currencyArray.Count == 3)
+        {
+            currencyArray.Insert(3, '.');
+        }
+    }
+
+
+    currencyArray.Reverse();
+    var totalString = new string(currencyArray.ToArray());
+}
+
+
+<div class="grid row g-4 column-2 py-2">
+    <div class="col-8">
+        <form id="formAgregar" class="row g-2 needs-validation" asp-action="Create" method="post" novalidate>
+            <div class="col-4">
+                <label>Insumo</label>
+                <select class="form-control form-select" asp-for="Item1.IdInsumo" aria-label="Default select example" asp-items="@(new SelectList(ViewBag.Insumos, "IdInsumo", "NomInsumo"))" required>
+                </select>
+                <div class="valid-feedback">
+                    ¡Todo bien!
+                </div>
+            </div>
+            <div class="col-4">
+                <label>Precio</label>
+                <input type="number" asp-for="Item1.PrecioInsumo" placeholder="Precio de insumo" class="form-control" required />
+                <div class="invalid-feedback">
+                    Por favor ingrese una el precio.
+                </div>
+            </div>
+            <div class="col-4">
+                <label>Cantidad</label>
+                <input type="number" asp-for="Item1.Cantidad" placeholder="Cantidad de insumo" class="form-control" required/>
+                <div class="invalid-feedback">
+                    Por favor ingrese una cantidad.
+                </div>
+            </div>
+            <div class="col-4">
+                <label>Medida</label>
+                <input type="text" asp-for="Item1.Medida" placeholder="Medida de la cantidad" class="form-control" required />
+                <div id="medidaFeedback" class="invalid-feedback"></div>
+            </div>
+            <input type="hidden" asp-for="Item1.IdCompra" value="@ViewBag.IdCompra" />
+            <div class="col-4 d-flex align-items-end justify-content-end">
+                <button class="btn btn-primary" type="submit">
+                    Agregar insumo
+                </button>
+            </div>
+        </form>
+        <div class="mt-3 border rounded bg-white">
+            <table class="table table-borderless mb-0">
+                <thead>
+                    <tr class="text-gray bg-gray-300">
+                        <th>Insumo</th>
+                        <th>Cantidad</th>
+                        <th>Medida</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detalle in ViewBag.Detalles)
+                    {
+                        <tr>
+                            <td>@detalle.NomInsumo</td>
+                            <td>@detalle.Cantidad</td>
+                            <td>@detalle.Medida</td>
+                            <td>@detalle.PrecioInsumo</td>
+                            <td>@detalle.Total</td>
+                            <td class="d-flex align-items-center">
+                                <a href="@Url.Action("Delete", "DetalleCompra", new { id = detalle.IdDetallesCompra, otroId = detalle.IdCompra})" class="btn border py-1 px-2">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-4 p-2 bg-white rounded border px-4 py-4">
+
+        <form  class="detail-container" asp-action="ConfirmSale" method="post">
+            <input type="hidden" asp-for="Item2.IdCompra" value="@ViewBag.IdCompra" />
+            <div>
+                <div class="w-100 d-flex flex-column mb-3 align-items-center">
+                    <p class="w-100 h4 mb-3 text-center"><strong>PACH_OS</strong></p>
+                    <p class="mb-0">NIT 8856</p>
+                    <p class="mb-0">Diagonal 57 #20-27, Navarra/Bello</p>
+                    <p class="mb-0">(+57) 3146486791</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="mb-0">$@totalString</p>
+                </div>
+                <hr />
+                <div class="d-flex flex-column align-items-center justify-content-between">
+                    <p class="mb-0 display-4"><strong>$@totalString</strong></p>
+                    <p class="mb-0">Total</p>
+                </div>
+                <hr />
+                <div class="">
+                    <p class="mb-0"><strong>Proveedor</strong></p>
+                    <select class="form-control form-select" asp-for="Item2.IdProveedor" asp-items="@(new SelectList(ViewBag.Proveedores, "IdProveedor", "NomLocal"))" required>
+                    </select>
+                </div>
+                <div class="">
+                    <p class="mb-0"><strong>Empleado</strong></p>
+                    <select class="form-control form-select" asp-for="Item2.IdEmpleado" asp-items="@(new SelectList(ViewBag.Empleados, "IdEmpleado", "Nombre"))" required>
+                    </select>
+                </div>
+                <input type="hidden" asp-for="Item2.Total" value="@total" />
+            </div>
+            <div class="w-100 d-flex flex-column mt-auto">
+                <a class="btn btn-light border mb-2" asp-controller="Compras" asp-action="Delete" asp-route-id="@ViewBag.IdCompra">Cancelar compra</a>
+                <button class="btn btn-primary" type="submit">Realizar compra</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Manejar el evento de cambio en el campo de PrecioInsumo
+        $('#Item1_PrecioInsumo').on('input', function () {
+            validatePrecioInsumo();
+        });
+
+        // Manejar el evento de cambio en el campo de Cantidad
+        $('#Item1_Cantidad').on('input', function () {
+            validateCantidad();
+        });
+
+        // Manejar el evento de cambio en el campo de Medida
+        $('#Item1_Medida').on('input', function () {
+            validateMedida();
+        });
+
+        function validatePrecioInsumo() {
+            var precioInsumo = $('#Item1_PrecioInsumo').val();
+            if (precioInsumo === '' || isNaN(precioInsumo)) {
+                $('#Item1_PrecioInsumo').addClass('is-invalid');
+            } else {
+                $('#Item1_PrecioInsumo').removeClass('is-invalid');
+            }
+        }
+
+        function validateCantidad() {
+            var cantidad = $('#Item1_Cantidad').val();
+            if (cantidad === '' || isNaN(cantidad)) {
+                $('#Item1_Cantidad').addClass('is-invalid');
+            } else {
+                $('#Item1_Cantidad').removeClass('is-invalid');
+            }
+        }
+
+        function validateMedida() {
+            var medida = $('#Item1_Medida').val();
+            var onlyLetters = /^[A-Za-z]+$/.test(medida);
+            var medidaFeedback = $('#medidaFeedback');
+
+            if (medida === '') {
+                medidaFeedback.text('Por favor ingrese la medida');
+                $('#Item1_Medida').addClass('is-invalid');
+            } else if (!onlyLetters) {
+                medidaFeedback.text('No se aceptan números');
+                $('#Item1_Medida').addClass('is-invalid');
+            } else {
+                medidaFeedback.text('');
+                $('#Item1_Medida').removeClass('is-invalid');
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
