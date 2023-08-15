@@ -1,49 +1,38 @@
-﻿html{
-    font-size: 16px;
+﻿body {
+    background-color: #eeeeee;
 }
 
-body {
-    margin: 0;
-    display: flex;
-    height: 100vh;
-    background-color: #F7F6F6;
-}
-
-nav {
-    background-color: #381F12;
-    color: #FFF;
-    height: 100vh;
-    width: 35vh;
-    border: 1px solid #000000;
+aside {
+    background-color: #381F12 !important;
     border-radius: 0px 0px 30px 0px;
-    display: grid;
-    grid-template-rows: 10% 80% 10%
+    color: #FFF
 }
 
-section {
-    width: 100%;
+.navbar {
+    height: 5vh !important;
 }
 
-header {
-    background-color: #D9D9D9;
-    height: 4vh;
-    width: 100%;
-    border: 1px solid #000;
-    padding: 0 15px 0 15px
+.content-wrapper {
+    background-color: #eeeeee;
+    overflow: auto;
 }
 
 .modulos {
     background-color: #FFF;
-    margin: 2vh 0 0 5vh;
+    margin: 6vh 0 0 5vh;
     width: 95%;
-    height: 85%;
+    height: 86vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
 
-.btn-crear-registros {
-    margin: 20px 0 0px 33px;
+.btn-crear-posicion {
+    position: absolute;
+    top: 6vh;
     width: 150px;
+}
+
+.estilo-btn-naranja {
     background: linear-gradient(180deg, #FF9200 2.08%, #8D5F20 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -52,25 +41,12 @@ header {
     border: none;
 }
 
-.encabezado-menu{
-    height: 20vh;
-    justify-items: center;
-    text-align: center;
-}
-
-.links-modulos {
-    text-decoration: none;
-    color: #FFF;
-}
-
 .links-modulos:hover {
     background: #eeeeee;
-    color: #000000;
-    font-size: 16px;
+    color: #000000 !important;
     border-radius: 10px;
-    width: 110%;
-    font-size: 18px;
-
+    width: 110% !important;
+    font-size: 18px !important;
 }
 
 .activo {
@@ -82,7 +58,7 @@ header {
     width: 115%;
 }
 
-.activo:hover{
+.activo:hover {
     color: #000;
 }
 

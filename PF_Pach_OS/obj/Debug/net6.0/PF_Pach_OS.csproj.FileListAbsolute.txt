@@ -506,3 +506,5 @@ C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\P
 C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\PF_Pach_OS\PF_Pach_OS\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\PF_Pach_OS\PF_Pach_OS\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\PF_Pach_OS\PF_Pach_OS\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\PF_Pach_OS\PF_Pach_OS\obj\Debug\net6.0\scopedcss\Views\Shared\_Navbar.cshtml.rz.scp.css
+C:\Users\vamil\OneDrive\Escritorio\Progrmacion\SENA\Proyecto Formativo Pach_OS\PF_Pach_OS\PF_Pach_OS\obj\Debug\net6.0\scopedcss\Views\Shared\_Sidebar.cshtml.rz.scp.css

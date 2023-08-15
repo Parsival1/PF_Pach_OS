@@ -18,42 +18,22 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <partial name="_Navbar"/>
-    <partial name="_Sidebar"/>
+    <partial name="_Navbar" />
+    <partial name="_Sidebar" />
 
     <article class="content-wrapper">
-        <form asp-action="Create" method="post">
-
-            <button type="submit" class="btn-crear-registros"
-            @if (ViewBag.mostrarModal == 0)
-            {
-                <text>data-bs-toggle="modal" data-bs-target="#staticBackdrop"</text>
-            }
-            else
-            {
-                String accion = ViewBag.accion;
-                String controlador = @ViewBag.controlador;
-                <text>onclick="window.location.href='@Url.Action($"{accion}", $"{controlador}")'"</text>
-            }
-            asp-action="@ViewBag.accion">@ViewBag.nombre
-            </button>
-        </form>
         <div class="modulos">
             @RenderBody()
         </div>
     </article>
-    
-    
-        
+
+
+
     <script src="~/adminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="~/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/adminLTE/dist/js/adminlte.min.js"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
