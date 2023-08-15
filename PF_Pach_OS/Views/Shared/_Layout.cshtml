@@ -23,22 +23,21 @@
 
     <article class="content-wrapper">
         <form asp-action="Create" method="post">
-            <div class="contenedor-configuracion">
-                <a class="nav-link btn-configuracion text-light" asp-action="">Configuracion</a>
-            </div>
-        </form>
-        </nav>
-        <section>
-            <header class="d-flex justify-content-between">
-                <label>@ViewBag.accion MODULO</label>
-            <label class="">@ViewBag.accion Usuario</label>
-            </header>
 
-            <form method="post" asp-controller="Compras" asp-action="Create">
-                <button type="submit" class="btn-crear-registros">
-                    Agregar compra
-                </button>
-            </form>
+            <button type="submit" class="btn-crear-registros"
+            @if (ViewBag.mostrarModal == 0)
+            {
+                <text>data-bs-toggle="modal" data-bs-target="#staticBackdrop"</text>
+            }
+            else
+            {
+                String accion = ViewBag.accion;
+                String controlador = @ViewBag.controlador;
+                <text>onclick="window.location.href='@Url.Action($"{accion}", $"{controlador}")'"</text>
+            }
+            asp-action="@ViewBag.accion">@ViewBag.nombre
+            </button>
+        </form>
         <div class="modulos">
             @RenderBody()
         </div>
