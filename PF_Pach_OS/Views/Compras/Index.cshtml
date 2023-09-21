@@ -1,0 +1,83 @@
+﻿@model PF_Pach_OS.Models.Compra;
+<link href="~/css/compras.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+}
+
+<input type="text" class="buscador" id="searchInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon">
+
+
+<form method="post" asp-controller="Compras" asp-action="Create">
+    <button type="submit" class="btn-crear-posicion estilo-btn-naranja">Registrar Compra</button>
+</form>
+
+
+<div class="mt-4 border rounded bg-white" style="max-height: 677px; overflow-y: auto;">
+    <table class="table mb-0 table-bordered table-striped">
+        <thead class="table-warning">
+            <tr>
+                <td>Proveedor</td>
+                <td>Fecha</td>
+                <td>Empleado</td>
+                <td>Total</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var compra in ViewBag.Compras)
+            {
+                <tr>
+                    <td>@compra.NomLocal</td>
+                    <td>@compra.FechaCompra</td>
+                    <td>@compra.Nombre</td>
+                    <td>@compra.Total</td>
+                    <td class="d-flex justify-content-center">
+                        <a asp-controller="DetalleCompra" asp-action="Details" asp-route-id="@compra.IdCompra" class="justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="orange" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Manejar el evento de cambio en el campo de búsqueda mientras se escribe
+        $('#searchInput').on('input', function () {
+            var searchText = $(this).val().trim().toLowerCase();
+
+            // Filtrar las filas de la tabla que coincidan con la búsqueda
+            $('tbody tr').each(function () {
+                var purchaseDate = $(this).find('td:eq(1)').text().trim().toLowerCase();
+                var provider = $(this).find('td:eq(0)').text().trim().toLowerCase();
+                var employee = $(this).find('td:eq(2)').text().trim().toLowerCase();
+
+                if (
+                    purchaseDate.includes(searchText) ||
+                    provider.includes(searchText) ||
+                    employee.includes(searchText)
+                ) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+        // Restablecer el placeholder cuando se borre el contenido o se pierda el foco
+        searchInput.on('blur', function () {
+            if ($(this).val().trim() === '') {
+                $(this).addClass('empty');
+            }
+        });
+
+        searchInput.on('focus', function () {
+            $(this).removeClass('empty');
+        });
+    });
+</script>

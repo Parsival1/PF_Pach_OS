@@ -1,0 +1,68 @@
+﻿@model PF_Pach_OS.Models.DetallesCompra
+
+@{
+    int? TotalCompra = 0;
+    ViewData["Title"] = "Create";
+    ViewBag.accion = "Index";
+    ViewBag.nombre = "Volver";
+    ViewBag.controlador = "Compras";
+    ViewBag.mostrarModal = 1;
+
+    var DetallesCompras = ViewData["DetallesCompras"] as List<DetallesCompra>;
+}
+
+<div class="compras-contenedor">
+    <div class="detalles-compras">
+        <form asp-controller="DetallesCompras" asp-action="Create">
+            <input type="number" value="@ViewBag.IdCompra" asp-for="IdCompra" hidden>
+            <select asp-items="ViewBag.IdInsumo" asp-for="IdInsumo"></select>
+            <input type="number" asp-for="Cantidad">
+            <input type="number" asp-for="PrecioInsumo" value="">
+            <input type="submit" value="Agregar" class="btn btn-success" />
+        </form>
+    </div>
+    <div class="lista-detalles">
+
+        @if (DetallesCompras == null || DetallesCompras.Count == 0)
+        {
+            <h1>No hay nada registrado</h1>
+        }
+        else
+        {
+            @foreach (var detalle in DetallesCompras)
+            {
+                <div>
+                    <label>@detalle.IdInsumoNavigation.NomInsumo</label>
+                    <label>@detalle.Cantidad</label>
+                    <label>@detalle.PrecioInsumo</label>
+                    @{
+                        var multiplicar = detalle.Cantidad * detalle.PrecioInsumo;
+                        TotalCompra += multiplicar; // Sumar el precio al totalCompra
+                    }
+                    <a asp-controller="DetallesCompras" asp-action="Delete" asp-route-id="@detalle.IdDetallesCompra" class="btn btn-outline-danger">Remover</a>
+                </div>
+            }
+        }
+    </div>
+    <div class="info-venta">
+        <form asp-controller="Compras" asp-action="ConfirmarCompra" method="post">
+            <input type="number" value="@ViewBag.IdCompra" asp-for="IdCompra" >
+            <div class="ventas-informacion">
+                <label>Fecha</label>
+                <input type="date" name="FechaCompra" class="form-control">
+            </div>
+
+            <div class="ventas-informacion">
+                <label>Total de compra</label>
+                <input type="number" name="Total" value="@TotalCompra" class="form-control">
+            </div>
+
+            <div class="ventas-informacion">
+                <label>Proveedor</label>
+                <select asp-for="IdCompraNavigation.IdProveedor" asp-items="@ViewBag.Proveedores" class="form-control"></select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar Compra</button>
+        </form>
+    </div>
+</div>

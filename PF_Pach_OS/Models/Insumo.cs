@@ -15,7 +15,6 @@ namespace PF_Pach_OS.Models
         public string? NomInsumo { get; set; }
         public int? CantInsumo { get; set; }
         public string? Medida { get; set; }
-
         public virtual ICollection<DetallesCompra> DetallesCompras { get; set; }
         public virtual ICollection<Receta> Receta { get; set; }
     }
