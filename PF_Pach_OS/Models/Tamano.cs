@@ -11,7 +11,6 @@ namespace PF_Pach_OS.Models
         }
 
         public byte IdTamano { get; set; }
-        public string? NombreTamano { get; set; }
         public byte? Tamano1 { get; set; }
         public byte? MaximoSabores { get; set; }
 

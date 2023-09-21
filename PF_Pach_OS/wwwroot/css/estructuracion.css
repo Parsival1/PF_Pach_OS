@@ -1,4 +1,4 @@
-﻿body {
+﻿body{
     background-color: #eeeeee;
 }
 
@@ -8,11 +8,11 @@ aside {
     color: #FFF
 }
 
-.navbar {
+.navbar{
     height: 5vh !important;
 }
 
-.content-wrapper {
+.content-wrapper{
     background-color: #eeeeee;
     overflow: auto;
 }
@@ -47,6 +47,7 @@ aside {
     border-radius: 10px;
     width: 110% !important;
     font-size: 18px !important;
+
 }
 
 .activo {
@@ -58,7 +59,7 @@ aside {
     width: 115%;
 }
 
-.activo:hover {
+.activo:hover{
     color: #000;
 }
 
@@ -82,5 +83,5 @@ aside {
     color: #FFF;
     text-align: center;
     border: none;
-    width: 150px;
+    width: auto;
 }

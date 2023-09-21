@@ -1,0 +1,55 @@
+﻿@model PF_Pach_OS.Models.Insumo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = null;
+}
+
+<h1>Edit</h1>
+
+<h4>DetalleVenta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdInsumo" />
+            <div class="form-group">
+                <label asp-for="NomInsumo" class="control-label">Nombre del insumo</label>
+                <input asp-for="NomInsumo" class="form-control" />
+                <span asp-validation-for="NomInsumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Cantida</label>
+                <input asp-for="CantInsumo" class="form-control" />
+                <span asp-validation-for="CantInsumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Medida">Medida</label>
+                <select class="form-control" id="Medida" name="Medida" required>
+                    <option value="" selected>Elige una opción</option>
+                    <option value="gramo">Gramo</option>
+                    <option value="mililitro">Mililitro</option>
+                    <option value="onza">Onza</option>
+                    <option value="unidad">Unidad</option>
+                </select>
+                <div class="invalid-feedback">
+                    Seleccione una unidad de medida.
+                </div>
+                <div class="valid-feedback">
+                    ¡Todo bien!
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
