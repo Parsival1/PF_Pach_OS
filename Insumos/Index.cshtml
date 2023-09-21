@@ -1,0 +1,214 @@
+﻿@model IEnumerable<PF_Pach_OS.Models.Insumo>
+<link href="~/css/compras.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+}
+<input type="text" class="buscador" id="searchInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon">
+
+<button type="button" class="btn-crear-posicion estilo-btn-naranja" data-toggle="modal" data-target="#createModal">Registrar insumo</button>
+
+<div class="mt-4 border rounded bg-white" style="max-height: 677px; overflow-y: auto;">
+    <table class="table mb-0 table-bordered table-striped">
+        <thead>
+            <tr class="table-warning">
+                <td>Nombre de insumo</td>
+                <td>Cantidad del insumo</td>
+                <td>Medida</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomInsumo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantInsumo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medida)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="createModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear nuevo insumo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="NomInsumo">Nombre del Insumo</label>
+                        <input type="text" class="form-control NomInsumo" id="NomInsumo" name="NomInsumo" required>
+                        <div id="nombreFeedback" class="invalid-feedback">
+                            Por favor llene el campo.
+                        </div>
+                        <div class="valid-feedback">
+                            ¡Todo bien!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="number" class="form-control CantInsumo" id="CantInsumo" name="CantInsumo" required>
+                        <div class="invalid-feedback">
+                            Por favor llene el campo.
+                        </div>
+                        <div class="valid-feedback">
+                            ¡Todo bien!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Medida">Medida</label>
+                        <select class="form-control" id="Medida" name="Medida" required>
+                            <option value="" selected>Elige una opción</option>
+                            <option value="Gramo">Gramo</option>
+                            <option value="Mililitro">Mililitro</option>
+                            <option value="Onza">Onza</option>
+                            <option value="Unidad">Unidad</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Seleccione una unidad de medida.
+                        </div>
+                        <div class="valid-feedback">
+                            ¡Todo bien!
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor seleccione un insumo.
+                    </div>
+                    <div class="valid-feedback">
+                        ¡Todo bien!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary botones-agregar">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Manejar el evento de cambio en el campo de NomInsumo
+        $('#NomInsumo').on('input', function () {
+            validateNomInsumo();
+        });
+
+        // Manejar el evento de cambio en el campo de Cantidad del insumo a crear
+        $('#CantInsumo').on('input', function () {
+            validateCantidadInsumo();
+        });
+
+        function validateNomInsumo() {
+            var NomInsumo = $('#NomInsumo').val();
+            var nombreFeedback = $('#nombreFeedback');
+
+            // Restablecer los estilos y mensajes de validación
+            $('#NomInsumo').removeClass('is-valid is-invalid');
+            nombreFeedback.text('');
+
+            // Validar si el campo está vacío
+            if (NomInsumo.trim() === '') {
+                $('#NomInsumo').addClass('is-invalid');
+                nombreFeedback.text('Por favor ingrese el nombre del insumo.');
+            } else if (!isNaN(NomInsumo)) {
+                // Validar si el campo contiene un número
+                $('#NomInsumo').addClass('is-invalid');
+                nombreFeedback.text('No se pueden ingresar números.');
+            } else {
+                // Realizar la solicitud AJAX solo si no hay problemas previos
+                $.ajax({
+                    type: 'GET',
+                    url: '/Insumos/NombreDuplicado', // Reemplaza esto con la ruta correcta a tu acción
+                    data: { Nombre: NomInsumo },
+                    success: function (result) {
+                        if (result === true) {
+                            $('#NomInsumo').addClass('is-invalid');
+                            nombreFeedback.text('Este insumo ya está registrado.');
+                        } else {
+                            $('#NomInsumo').addClass('is-valid');
+                            nombreFeedback.text('');
+                        }
+                    },
+                    error: function () {
+                        // Manejo de errores si la solicitud falla
+                        console.log('Error en la solicitud AJAX');
+                    }
+                });
+            }
+        }
+
+
+
+        function validateCantidadInsumo() {
+            var cantidad = $('#CantInsumo').val();
+            if (cantidad === '' || isNaN(cantidad)) {
+                $('#CantInsumo').removeClass('is-valid');
+                $('#CantInsumo').addClass('is-invalid');
+            } else {
+                $('#CantInsumo').removeClass('is-invalid');
+                $('#CantInsumo').addClass('is-valid');
+            }
+        }
+
+    });
+</script>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false || $('#NomInsumo').hasClass('is-invalid')) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Manejar el evento de cambio en el campo de búsqueda mientras se escribe
+        $('#searchInput').on('input', function () {
+            var searchTerm = $(this).val().trim().toLowerCase();
+
+            // Filtrar las filas de la tabla que coincidan con el término de búsqueda
+            $('tbody tr').each(function () {
+                var productName = $(this).find('td:first').text().toLowerCase();
+
+                if (productName.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E</script>

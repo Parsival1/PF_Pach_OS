@@ -1,0 +1,42 @@
+﻿.Proveedores {
+    position: absolute;
+    top: -100px
+}
+
+.col-4.p-2.bg-white.rounded.border.px-4.py-4 {
+    left: 2vh;
+    height: 80vh;
+    top: -2vh;
+}
+.col-8{
+}
+
+.f{
+    margin:3vh
+}
+
+.col-7 {
+   left: 4%;
+}
+
+
+
+/* Estilo para el campo de búsqueda */
+.buscador {
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    top: 5.8vh;
+    right: 5vh;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Agregamos una transición para suavizar el cambio */
+    border: none;
+    text-align: center; /* Centrar el texto horizontalmente */
+}
+
+/* Estilos cuando el campo de búsqueda está enfocado */
+.buscador:focus {
+    width: 220px; /* Ancho ligeramente mayor */
+    transform: translateX(10px); /* Desplazamiento hacia la derecha */
+    box-shadow: 20px 0 20px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}

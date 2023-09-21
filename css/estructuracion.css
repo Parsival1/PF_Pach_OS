@@ -1,0 +1,87 @@
+﻿body{
+    background-color: #eeeeee;
+}
+
+aside {
+    background-color: #381F12 !important;
+    border-radius: 0px 0px 30px 0px;
+    color: #FFF
+}
+
+.navbar{
+    height: 5vh !important;
+}
+
+.content-wrapper{
+    background-color: #eeeeee;
+    overflow: auto;
+}
+
+.modulos {
+    background-color: #FFF;
+    margin: 6vh 0 0 5vh;
+    width: 95%;
+    height: 86vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.btn-crear-posicion {
+    position: absolute;
+    top: 6vh;
+    width: 150px;
+}
+
+.estilo-btn-naranja {
+    background: linear-gradient(180deg, #FF9200 2.08%, #8D5F20 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: #FFF;
+    text-align: center;
+    border: none;
+}
+
+.links-modulos:hover {
+    background: #eeeeee;
+    color: #000000 !important;
+    border-radius: 10px;
+    width: 110% !important;
+    font-size: 18px !important;
+
+}
+
+.activo {
+    background: #D9D9D9;
+    padding-left: 20px;
+    color: #000000;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 115%;
+}
+
+.activo:hover{
+    color: #000;
+}
+
+.contenedor-configuracion {
+    background-color: #4E2B19;
+    border-radius: 0px 0px 30px 0px;
+    height: 40px;
+    width: 100%;
+    align-self: end;
+}
+
+.btn-configuracion:hover {
+    color: #000;
+    background-color: #52392E;
+    border-radius: 0px 0px 30px 0px;
+}
+
+.botones-agregar {
+    background: linear-gradient(180deg, #FF9200 2.08%, #8D5F20 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    text-align: center;
+    border: none;
+    width: auto;
+}
